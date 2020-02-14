@@ -196,7 +196,9 @@ export class SignIn extends AuthPiece<ISignInProps, ISignInState> {
 								disabled={this.state.loading}
 								data-test={auth.signIn.signInButton}
 							>
-								{this.state.loading ? I18n.get('Sign In') : I18n.get('Loading...')}
+								{!this.state.loading
+									? I18n.get('Sign In')
+									: I18n.get('Loading...')}
 							</Button>
 						</SectionFooterPrimaryContent>
 						{!hideSignUp && (
