@@ -220,7 +220,7 @@ export const Button = props => {
 		<button
 			{...p}
 			className={AmplifyUI.button}
-			style={style}
+			style={{ ...style, opacity: disabled ? 0.7 : 1 }}
 			disabled={disabled}
 		>
 			{props.children}
@@ -245,8 +245,13 @@ export const PhotoPickerButton = props => {
 
 export const SignInButton = props => {
 	const theme = props.theme || AmplifyTheme;
-	const styles = Object.assign({}, theme.signInButton, theme[props.variant]);
-	const p = objectLessAttributes(props, 'theme');
+	const styles = Object.assign(
+		{},
+		theme.signInButton,
+		theme[props.variant],
+		props.style
+	);
+	const p = JS.objectLessAttributes(props, 'theme');
 
 	return beforeAfter(
 		<button {...p} className={AmplifyUI.signInButton} style={styles}>
